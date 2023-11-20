@@ -23,3 +23,17 @@ Enter total payments for month(2)  : 75
 Your closing balance is $51.51
 
 """
+
+current_balance = 0
+def calculate_balance(purchases, payments, balance):
+    interest = 0
+    if balance > 0:
+        interest = balance * 0.02
+    new_balance = balance + purchases - payments + interest
+    return new_balance, interest
+for month in range(1, 4):  
+    purchases = float(input(f"Enter total purchases for month({month}): "))
+    payments = float(input(f"Enter total payments for month({month}): "))
+    current_balance, interest_charged = calculate_balance(purchases, payments, current_balance)
+    print(f"2% interest has been charged: {interest_charged:.2f}")
+    print(f"Your closing balance is ${current_balance:.2f}\n")
